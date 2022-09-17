@@ -1,0 +1,159 @@
+:root {
+    --black-background: rgb(17, 17, 19);
+    --gray-box: rgb(42, 38, 52);
+    --whitegray: rgb(161, 161, 170);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} /*Retira a padronização do navegador*/
+
+body * {
+    font-family: "Inter", sans-serif;
+    line-height: 160%; /* altura da linha */
+}
+
+body {
+    background-image: url(./img/bg.png);
+    background-position: top center;
+    background-size: 100% auto; /*A imagem vai se adptar com o tamanho do dispositivo, sendo 100% da horizontal e automatico para cima e p/ baixo*/
+    background-repeat: no-repeat;
+    background-color: var(--black-background);
+}
+
+main {
+    max-width: 580px;
+    width: 90%; /*Caso seja menor que 580px*/
+    margin: 32px auto; /* 32px em cima e em baixo, ja as laterais ficam automáticas*/
+
+    display: grid;
+    gap: 24px;
+}
+
+header {
+    text-align: center;
+    height: 152px; /*Deixando um tamanho fixo pra div, para os outros componentes não ficarem em cima durante a animação*/
+}
+
+/* TRANSIÇÃO */
+
+
+header div {
+    transition: transform .3s;
+}
+
+header div:hover {
+    transform: scale(1.1)
+}
+
+/*----------*/
+
+header img {
+    margin-top: 32px;
+    width: 120px;
+    border-radius: 50%;
+    background-image: linear-gradient(90deg, rgb(132, 0, 255) 0%, rgb(68, 0, 255) 50%, rgb(73, 183, 247) 100%);
+    padding: 4px;
+}
+
+section {
+    color: white;
+    background-image: linear-gradient(90deg, rgb(132, 0, 255) 0%, rgb(68, 0, 255) 50%, rgb(73, 183, 247) 100%);
+    padding-top: 4px; /*Vai subir um preenchimento s*/
+    border-radius: 10px;
+}
+
+section div {
+    background-color: var(--gray-box);
+    padding: 32px;
+    padding-top: 24px;
+    border-radius: 8px;
+}
+
+section h2 {
+    letter-spacing: -0.47px;
+}
+
+section p {
+    letter-spacing: -0.18px;
+    color: var(--whitegray);
+}
+
+
+section ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin-top: 24px;
+
+    flex-wrap: wrap; /*Caso os itens atingem o maximo da caixa, eles caem para baixo e se ajustam com o dipositivo*/
+}
+
+/* TRANSIÇÃO */
+
+section ul, li {
+    transition: transform .3s;
+}
+
+section ul li:hover {
+    transform: scale(1.1);
+}
+
+/*CONFIG CLASSES*/
+
+.section-games img {
+    width: 90px;
+    border-radius: 8px;
+}
+
+.section-channel img {
+    width: 70px;
+    border-radius: 50%;
+    border: 1px solid rgb(18, 12, 24)
+}
+
+/*ANIMATION*/
+
+@keyframes fromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px)
+    };
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    };
+}
+
+@keyframes fromBottom {
+    from {
+        opacity: 0;
+        transform: translateX(-30px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+/*Aplicando em um elemento*/
+
+header div {
+    animation: fromTop .7s .4s backwards;
+}
+
+main section {
+    animation: fromBottom .7s backwards;
+}
+
+main section:nth-child(2) {
+    animation-delay: .4s;
+}
+
+main section:nth-child(3) {
+    animation-delay: .6s;
+}
